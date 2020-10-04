@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, Link, graphql } from "gatsby"
-import NavWrapper from "../elements/NavElements"
+import { NavWrapper } from "../elements/"
 
 const Nav = () => {
   const data = useStaticQuery(graphql`
