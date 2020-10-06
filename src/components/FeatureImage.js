@@ -3,7 +3,7 @@ import Img from "gatsby-image"
 import { FeatureImageWrapper } from "../elements"
 import { useStaticQuery, graphql } from "gatsby"
 
-const FeatureImage = ({ fixed }) => {
+export const FeatureImage = ({ fixed }) => {
   const data = useStaticQuery(graphql`
     query {
       imageSharp(fixed: { originalName: { eq: "office.jpg" } }) {

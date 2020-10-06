@@ -6,7 +6,7 @@ import {
   FooterSocialIcons,
 } from "../elements/"
 
-const Footer = () => {
+export const Footer = () => {
   const data = useStaticQuery(graphql`
     query {
       facebook: file(relativePath: { eq: "facebook-logo.svg" }) {
@@ -61,5 +61,3 @@ const Footer = () => {
     </FooterWrapper>
   )
 }
-
-export default Footer

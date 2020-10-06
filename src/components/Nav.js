@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, Link, graphql } from "gatsby"
 import { NavWrapper } from "../elements/"
 
-const Nav = () => {
+export const Nav = () => {
   const data = useStaticQuery(graphql`
     query {
       logo: file(relativePath: { eq: "logo.svg" }) {
@@ -19,5 +19,3 @@ const Nav = () => {
     </NavWrapper>
   )
 }
-
-export default Nav
