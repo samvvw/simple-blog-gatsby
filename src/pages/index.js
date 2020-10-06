@@ -7,9 +7,8 @@ import {
   Content,
   Footer,
   ContentCard,
+  SEO,
 } from "../components"
-
-import SEO from "../components/seo"
 
 const IndexPage = ({ children }) => (
   <Container>
