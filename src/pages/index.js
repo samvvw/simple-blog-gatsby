@@ -1,13 +1,8 @@
 import React from "react"
 
-import {
-  Nav,
-  Container,
-  SEO,
-  FeatureImage,
-  Content,
-  Footer,
-} from "../components"
+import { Nav, Container, FeatureImage, Content, Footer } from "../components"
+
+import SEO from "../components/seo"
 
 const IndexPage = ({ children }) => (
   <Container>
