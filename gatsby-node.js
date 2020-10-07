@@ -20,7 +20,7 @@ exports.createPages = async function ({ actions, graphql }) {
       }
     }
   `)
-  // Create paginater pages for ports
+  // Create paginater pages for posts
 
   const postPerPage = 3
 
@@ -41,13 +41,13 @@ exports.createPages = async function ({ actions, graphql }) {
 
   // Create single blog post
 
-  //   data.allMdx.edges.forEach(edge => {
-  //     const slug = edge.node.frontmatter.slug
-  //     const id = edge.node.id
-  //     actions.currentPage({
-  //       path: slug,
-  //       components: require.resolve("./src/templates/singlePost.js"),
-  //       context: { id },
-  //     })
-  //   })
+  data.allMdx.edges.forEach(edge => {
+    const slug = edge.node.frontmatter.slug
+    const id = edge.node.id
+    actions.createPage({
+      path: slug,
+      component: require.resolve("./src/templates/singlePost.js"),
+      context: { id },
+    })
+  })
 }
