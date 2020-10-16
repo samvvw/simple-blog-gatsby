@@ -29,28 +29,28 @@ export const Footer = () => {
       <FooterSocialWrapper>
         <FooterSocialIcons>
           <a
-            href="httpq://facebook.com"
+            href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img src={data.facebook.publicURL} alt="facebook" />
           </a>
           <a
-            href="httpq://linkedin.com"
+            href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img src={data.linkedin.publicURL} alt="linkedin" />
           </a>
           <a
-            href="httpq://twitter.com"
+            href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img src={data.twitter.publicURL} alt="twitter" />
           </a>
           <a
-            href="httpq://instagram.com"
+            href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
           >
