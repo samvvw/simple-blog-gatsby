@@ -22,7 +22,7 @@ const allPosts = ({ pageContext, data }) => {
 
   return (
     <Container>
-      <SEO title="blog" />
+      <SEO title="Blog" />
       <Nav />
       <FeatureImage />
       <Content>

@@ -1,87 +1,89 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from "react"
-import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 
-export function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  )
-
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
-
+export const SEO = ({ description, keywords, title, image, url, author }) => {
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
+    <StaticQuery
+      query={detailsQuery}
+      render={data => {
+        const metaDescription =
+          description || data.site.siteMetadata.description
+        const metaTitle = title || data.site.siteMetadata.title
+        const metaAuthor = author || data.site.siteMetadata.author
+        const metaUrl = url || data.site.siteMetadata.url
+        const metaImage = image || data.site.siteMetadata.image
+        const metaKeywords = keywords || ["gatsby blog", "gatsby MDX blog"]
+        console.log(data.site.siteMetadata.title)
+
+        return (
+          <Helmet
+            title={metaTitle}
+            meta={[
+              {
+                name: `description`,
+                content: metaDescription,
+              },
+              {
+                name: "url",
+                content: metaUrl,
+              },
+              {
+                property: `og:title`,
+                content: metaTitle,
+              },
+              {
+                property: `og:description`,
+                content: metaDescription,
+              },
+              {
+                property: `og:type`,
+                content: `website`,
+              },
+              {
+                name: `twitter:card`,
+                content: `summary`,
+              },
+              {
+                name: `twitter:creator`,
+                content: metaAuthor,
+              },
+              {
+                name: `twitter:title`,
+                content: title,
+              },
+              {
+                name: `twitter:description`,
+                content: metaDescription,
+              },
+              {
+                name: "image",
+                content: metaImage,
+              },
+            ].concat(
+              metaKeywords && metaKeywords.length > 0
+                ? {
+                    name: "keywords",
+                    content: metaKeywords.join(", "),
+                  }
+                : []
+            )}
+          />
+        )
       }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
     />
   )
 }
 
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-}
+const detailsQuery = graphql`
+  query DefaultSeoQuery {
+    site {
+      siteMetadata {
+        title
+        description
+        author
+        image
+      }
+    }
+  }
+`

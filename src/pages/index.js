@@ -12,7 +12,7 @@ import {
 
 const IndexPage = ({ children }) => (
   <Container>
-    <SEO title="Home" />
+    <SEO />
     <Nav />
     <FeatureImage />
     <Content>
