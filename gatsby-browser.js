@@ -6,9 +6,11 @@
 
 // You can delete this file if you're not using it
 
+import React from "react"
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 import Theme from "./src/themes/theme"
-import React from "react"
+import { MDXProvider } from "@mdx-js/react"
+import { Table } from "./src/components"
 
 const GlobalSyles = createGlobalStyle`
   * {
@@ -25,9 +27,15 @@ const GlobalSyles = createGlobalStyle`
   }
 `
 
+const components = {
+  table: Table,
+}
+
 export const wrapRootElement = ({ element }) => (
-  <ThemeProvider theme={Theme}>
-    <GlobalSyles />
-    {element}
-  </ThemeProvider>
+  <MDXProvider components={components}>
+    <ThemeProvider theme={Theme}>
+      <GlobalSyles />
+      {element}
+    </ThemeProvider>
+  </MDXProvider>
 )
